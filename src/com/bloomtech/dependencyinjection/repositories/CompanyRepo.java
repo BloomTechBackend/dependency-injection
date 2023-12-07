@@ -11,11 +11,14 @@ import java.util.Optional;
 
 @Repository
 public class CompanyRepo {
-    @Autowired
-    private Datasource datasource;
 
-    @Autowired
+    private Datasource datasource;
     private ContactRepo contactRepo;
+
+    public CompanyRepo(Datasource datasource, ContactRepo contactRepo) {
+        this.datasource = datasource;
+        this.contactRepo = contactRepo;
+    }
 
     public Company findByName(String name) {
         Optional<Company> company = datasource.companyData.stream().filter(c -> c.getName().equals(name)).findFirst();

@@ -10,9 +10,11 @@ import java.util.List;
 
 @Service
 public class CompanyService {
-
-    @Autowired
     private CompanyRepo companyRepo;
+
+    public CompanyService(CompanyRepo companyRepo) {
+        this.companyRepo = companyRepo;
+    }
 
     public List<Contact> getContactsByCompanyName(String companyName) {
         return companyRepo.findContacts(companyName);
