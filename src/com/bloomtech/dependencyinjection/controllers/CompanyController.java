@@ -16,9 +16,11 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/company")
 public class CompanyController {
-
-    @Autowired
     private CompanyService companyService;
+
+    public CompanyController(CompanyService companyService) {
+        this.companyService = companyService;
+    }
 
     @GetMapping(value = "/{name}")
     public ResponseEntity<?> getCompany(@PathVariable String name) {
